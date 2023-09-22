@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Middleware\TokenAuthenticate;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -53,5 +54,15 @@ Route::post('/CreateCartList', [ProductController::class, 'CreateCartList'])->mi
 Route::get('/CartList', [ProductController::class, 'CartList'])->middleware([TokenAuthenticate::class]);
 Route::get('/DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList'])->middleware([TokenAuthenticate::class]);
 
+
+// Invoice and payment
+Route::get("/InvoiceCreate", [InvoiceController::class, 'InvoiceCreate'])->middleware([TokenAuthenticate::class]);
+Route::get("/InvoiceList", [InvoiceController::class, 'InvoiceList'])->middleware([TokenAuthenticate::class]);
+Route::get("/InvoiceProductList/{invoice_id}", [InvoiceController::class, 'InvoiceProductList'])->middleware([TokenAuthenticate::class]);
+
+//payment
+Route::post("/PaymentSuccess", [InvoiceController::class, 'PaymentSuccess']);
+Route::post("/PaymentCancel", [InvoiceController::class, 'PaymentCancel']);
+Route::post("/PaymentFail", [InvoiceController::class, 'PaymentFail']);
 
 
