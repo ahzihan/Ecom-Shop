@@ -9,12 +9,17 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+//Page Route
+Route::get('/', [HomeController::class, 'HomePage']);
+
 
 // Brand List
 Route::get('/BrandList', [BrandController::class, 'BrandList']);
