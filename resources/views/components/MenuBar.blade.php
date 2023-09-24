@@ -25,8 +25,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="index.html">
-                    <img class="logo_light" src="assets/images/logo_light.png" alt="logo">
-                    <img class="logo_dark" src="assets/images/logo_dark.png" alt="logo">
+                    <img class="logo_light" src="{{ asset('assets/images/logo_light.png')}}" alt="logo">
+                    <img class="logo_dark" src="{{ asset('assets/images/logo_dark.png')}}" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-expanded="false">
@@ -55,7 +55,7 @@
                                 <ul class="cart_list">
                                     <li>
                                         <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                        <a href="#"><img src="assets/images/cart_thamb1.jpg"
+                                        <a href="#"><img src="{{ asset('assets/images/cart_thamb1.jpg')}}"
                                         alt="cart_thumb1">Variable product 001</a>
                                         <span class="cart_quantity"> 1 x <span class="cart_amount"> <span
                                         class="price_symbole">$</span></span>78.00</span>
