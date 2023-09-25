@@ -9,6 +9,10 @@ use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller
 {
+    function CategoryPage(){
+        return view('pages.product-by-category');
+    }
+
     function CategoryList(): JsonResponse
     {
         $data = Category::all();

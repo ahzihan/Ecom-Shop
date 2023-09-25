@@ -11,7 +11,7 @@
 
 <script>
 
-    HeroSlider();
+
     async function HeroSlider() {
         let res=await axios.get("/ListProductSlider");
         $("#SliderItem").empty();
