@@ -24,7 +24,7 @@
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="logo_light" src="{{ asset('assets/images/logo_light.png')}}" alt="logo">
                     <img class="logo_dark" src="{{ asset('assets/images/logo_dark.png')}}" alt="logo">
                 </a>
@@ -35,13 +35,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="dropdown">
-                            <a data-bs-toggle="dropdown" class="nav-link active" href="#">Home</a>
+                            <a data-bs-toggle="dropdown" class="nav-link active" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="dropdown">
-                            <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Products</a>
+                            <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="{{ url('/') }}">Products</a>
                             <div class="dropdown-menu">
-                                <ul>
-                                    <li><a class="dropdown-item nav-link nav_item active" href="index.html">Fashion 1</a></li>
+                                <ul id="CategoryItem">
+
                                 </ul>
                             </div>
                         </li>
@@ -49,13 +49,13 @@
                             <a data-bs-toggle="dropdown" class="nav-link" href="wishlist.html"><i class="ti-heart"></i><span class="mx-2">Wishlist</span></a>
                         </li>
                         <li class="dropdown cart_dropdown">
-                            <a class="nav-link cart_trigger" href="#"
+                            <a class="nav-link cart_trigger" href="{{ url('/') }}"
                             data-bs-toggle="dropdown"><i class="linearicons-cart"></i>Cart<span class="cart_count">1</span></a>
                             <div class="cart_box dropdown-menu dropdown-menu-right">
                                 <ul class="cart_list">
                                     <li>
-                                        <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                        <a href="#"><img src="{{ asset('assets/images/cart_thamb1.jpg')}}"
+                                        <a href="{{ url('/') }}" class="item_remove"><i class="ion-close"></i></a>
+                                        <a href="{{ url('/') }}"><img src="{{ asset('assets/images/cart_thamb1.jpg')}}"
                                         alt="cart_thumb1">Variable product 001</a>
                                         <span class="cart_quantity"> 1 x <span class="cart_amount"> <span
                                         class="price_symbole">$</span></span>78.00</span>
@@ -63,8 +63,8 @@
                                 </ul>
                                 <div class="cart_footer">
                                     <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
-                                    <p class="cart_buttons"><a href="#"
-                                    class="btn btn-fill-line rounded-0 view-cart">View Cart</a><a href="#"
+                                    <p class="cart_buttons"><a href="{{ url('/') }}"
+                                    class="btn btn-fill-line rounded-0 view-cart">View Cart</a><a href="{{ url('/') }}"
                                     class="btn btn-fill-out rounded-0 checkout">Checkout</a></p>
                                 </div>
                             </div>
@@ -92,3 +92,18 @@
         </div>
     </div>
 </header>
+
+
+<script>
+
+    Category();
+    async function Category() {
+        let res=await axios.get("/CategoryList");
+        $("#CategoryItem").empty();
+        res.data['data'].forEach((item,i)=>{
+            let EachItem=`<li><a class="dropdown-item nav-link nav_item" href="">${item['categoryName']}</a></li>`;
+            $("#CategoryItem").append(EachItem);
+        })
+
+    }
+</script>
