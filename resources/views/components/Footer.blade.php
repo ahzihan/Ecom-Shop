@@ -23,23 +23,19 @@
                 	<div class="widget">
                         <h6 class="widget_title">Useful Links</h6>
                         <ul class="widget_links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Location</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="/policy?name=about">About Us</a></li>
+                            <li><a href="/policy?name=how to buy">How To Buy</a></li>
+                            <li><a href="/policy?name=contact">Contact</a></li>
+                            <li><a href="/policy?name=complain">Complain</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                 	<div class="widget">
-                        <h6 class="widget_title">Category</h6>
+                        <h6 class="widget_title">Legals</h6>
                         <ul class="widget_links">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Woman</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Best Saller</a></li>
-                            <li><a href="#">New Arrivals</a></li>
+                            <li><a href="/policy?name=refund">Refund Policy</a></li>
+                            <li><a href="/policy?name=terms">Terms & Condition</a></li>
                         </ul>
                     </div>
                 </div>
@@ -47,11 +43,10 @@
                 	<div class="widget">
                         <h6 class="widget_title">My Account</h6>
                         <ul class="widget_links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Discount</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Orders History</a></li>
-                            <li><a href="#">Order Tracking</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Wish List</a></li>
+                            <li><a href="#">Cart List</a></li>
+                            <li><a href="#">Order History</a></li>
                         </ul>
                     </div>
                 </div>

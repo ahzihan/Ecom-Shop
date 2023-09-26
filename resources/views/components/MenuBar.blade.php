@@ -13,7 +13,7 @@
                 <div class="col-md-6">
                     <div class="text-center text-md-end">
                         <ul class="header_list">
-                            <li><a href="wishlist.html"><span>About</span></a></li>
+                            <li><a href="/policy?name=about"><span>About</span></a></li>
                             <li><a href="login.html"><i class="ti-user"></i><span>Account</span></a></li>
                         </ul>
                     </div>
@@ -34,9 +34,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="dropdown">
-                            <a data-bs-toggle="dropdown" class="nav-link active" href="{{ url('/') }}">Home</a>
-                        </li>
+                        <li><a class="nav-link nav_item active" href="{{ url('/') }}">Home</a></li>
                         <li class="dropdown">
                             <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="{{ url('/') }}">Products</a>
                             <div class="dropdown-menu">

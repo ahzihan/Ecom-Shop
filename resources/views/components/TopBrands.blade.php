@@ -9,16 +9,7 @@
             </div>
 		</div>
         <div id="TopBrandItem" class="row align-items-center">
-            <div class="col-2 p-2">
-                <div class="item">
-                    <div class="categories_box">
-                        <a href="#">
-                            <img src="{{asset('assets/images/cat_img1.png" alt="cat_img1')}}"/>
-                            <span>Brand Name</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
@@ -33,7 +24,7 @@
             let EachItem=`<div class="col-2 p-2">
                 <div class="item">
                     <div class="categories_box">
-                        <a href="#">
+                        <a href="/by-brand?id=${item['id']}">
                             <img src="${item['brandImg']}" alt="cat_img1')}}"/>
                             <span>${item['brandName']}</span>
                         </a>

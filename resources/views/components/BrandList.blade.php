@@ -3,7 +3,7 @@
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1 id="catName"></h1>
+            		<h1 id="brandName"></h1>
                 </div>
             </div>
             <div class="col-md-6">
@@ -18,7 +18,7 @@
 
 <div class="mt-5">
     <div class="container my-5">
-        <div id="ProductByCategoryList" class="row">
+        <div id="ProductByBrandList" class="row">
 
         </div>
     </div>
@@ -26,17 +26,17 @@
 
 
 <script>
-    async function ByCategoryList(){
+    async function ByBrandList(){
         let searchParams= new URLSearchParams(window.location.search);
         let id=searchParams.get('id');
-        let res=await axios.get(`/ListProductByCategory/${id}`);
-        $("#ProductByCategoryList").empty();
+        let res=await axios.get(`/ListProductByBrand/${id}`);
+        $("#ProductByBrandList").empty();
         res.data['data'].forEach((item,i)=>{
             let EachItem=`<div class="col-lg-3 col-md-4 col-6">
                             <div class="product">
                                 <div class="product_img">
                                     <a href="#">
-                                        <img src="${item['image']}" alt="product_img2">
+                                        <img src="${item['image']}" alt="product_img">
                                     </a>
                                     <div class="product_action_box">
                                         <ul class="list_none pr_action_btn">
@@ -61,9 +61,9 @@
                                 </div>
                             </div>
                         </div>`;
-            $("#ProductByCategoryList").append(EachItem);
+            $("#ProductByBrandList").append(EachItem);
 
-            $("#catName").text(res.data['data'][0]['category']['categoryName']);
+            $("#brandName").text(res.data['data'][0]['brand']['brandName']);
         })
     }
 </script>

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PolicyController extends Controller
 {
+    function PolicyPage(){
+        return view('pages.policy');
+    }
+
     function PolicyByType(Request $request){
         return Policy::where('type','=',$request->type)->first();
     }

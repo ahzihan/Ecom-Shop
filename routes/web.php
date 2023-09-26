@@ -20,6 +20,8 @@ use App\Http\Controllers\HomeController;
 //Page Route
 Route::get('/', [HomeController::class, 'HomePage']);
 Route::get('/by-category', [CategoryController::class, 'CategoryPage']);
+Route::get('/by-brand', [BrandController::class, 'BrandPage']);
+Route::get('/policy', [PolicyController::class, 'PolicyPage']);
 
 
 // Brand List

@@ -10,6 +10,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class BrandController extends Controller
 {
+    function BrandPage(){
+        return view('pages.product-by-brand');
+    }
+
     function BrandList():JsonResponse
     {
         $data=Brand::all();
