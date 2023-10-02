@@ -7,11 +7,11 @@
 
     <script>
         (async ()=>{
-            await TopBrands();
+            await ProductDetails();
             //loader
             $(".preloader").delay(80).fadeOut(100).addClass('loaded');
 
-
+            await TopBrands();
         })()
     </script>
 @endsection

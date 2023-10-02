@@ -35,7 +35,7 @@
             let EachItem=`<div class="col-lg-3 col-md-4 col-6">
                             <div class="product">
                                 <div class="product_img">
-                                    <a href="#">
+                                    <a href="/details?id=${item['id']}">
                                         <img src="${item['image']}" alt="product_img2">
                                     </a>
                                     <div class="product_action_box">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="product_info">
                                     <h6 class="product_title">
-                                        <a href="#">${item['title']}</a></h6>
+                                        <a href="/details?id=${item['id']}">${item['title']}</a></h6>
                                     <div class="product_price">
                                         <span class="price">$ ${item['price']}</span>
                                     </div>

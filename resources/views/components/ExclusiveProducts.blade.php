@@ -81,27 +81,27 @@
             let EachItem=`<div class="col-lg-3 col-md-4 col-6">
                             <div class="product">
                                 <div class="product_img">
-                                    <a href="shop-product-detail.html">
+                                    <a href="/details?id=${item['id']}">
                                         <img src="${item['image']}" alt="product_img2">
                                     </a>
                                     <div class="product_action_box">
                                         <ul class="list_none pr_action_btn">
                                             <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                            <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                            <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                                            <li><a href="#" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                            <li><a href="/details?id=${item['id']}" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                             <li><a href="#"><i class="icon-heart"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="product_info">
                                     <h6 class="product_title">
-                                        <a href="#">${item['title']}</a></h6>
+                                        <a href="/details?id=${item['id']}">${item['title']}</a></h6>
                                     <div class="product_price">
                                         <span class="price">$ ${item['price']}</span>
                                     </div>
                                     <div class="rating_wrap">
                                         <div class="rating">
-                                            <div class="product_rate" style="wPopularItemth:${item['star']}%"></div>
+                                            <div class="product_rate" style="width:${item['star']}%"></div>
                                         </div>
                                     </div>
                                 </div>

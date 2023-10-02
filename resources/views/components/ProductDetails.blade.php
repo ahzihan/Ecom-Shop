@@ -5,7 +5,7 @@
                 <div class="product-image">
 
                     <div class="product_img_box">
-                        <img id="product_img" class="w-100" src="assets/images/product_img1.jpg" alt="product_img1">
+                        <img id="product_img" class="w-100" src="assets/images/product_img1.jpg" alt="product_img">
                     </div>
                     <div class="row p-2">
                         <a href="#" class="col-3 product_img_box p-1">
@@ -26,12 +26,10 @@
             <div class="col-lg-6 col-md-6">
                 <div class="pr_detail">
                     <div class="product_description">
-                        <h4 class="product_title"><a href="#">Blue Dress For Woman</a></h4>
-                        <div class="product_price">
-                            <span class="price">$45.00</span>
-                        </div>
+                        <h4 id="p_title" class="product_title"></h4>
+                        <h1 id="p_price" class="price"></h1>
                         <div class="pr_desc">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                            <p id="p_des"></p>
                         </div>
                         <div class="product_sort_info">
                             <ul>
@@ -40,30 +38,17 @@
                                 <li><i class="linearicons-bag-dollar"></i> Cash on Delivery available</li>
                             </ul>
                         </div>
-                        <div class="pr_switch_wrap">
+                        <div>
                             <label class="form-lable">Color</label>
-                            <div class="product_color_switch">
-                                <select class="form-select" name="color" id="p_color">
-                                    <option value="">Choose Color</option>
-                                    <option value="red">Red</option>
-                                    <option value="green">Green</option>
-                                    <option value="blue">Blue</option>
-                                    <option value="yellow">Yellow</option>
-                                </select>
-                            </div>
+                            <select class="form-select" name="color" id="p_color">
+
+                            </select>
                         </div>
-                        <div class="pr_switch_wrap">
+                        <div>
                             <label class="form-lable">Size</label>
-                            <div class="product_size_switch">
-                                <select class="form-select" name="size" id="p_size">
-                                    <option value="">Choose Size</option>
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
-                                    <option value="xl">XL</option>
-                                    <option value="xxl">XXL</option>
-                                </select>
-                            </div>
+                            <select class="form-select" name="size" id="p_size">
+
+                            </select>
                         </div>
                     </div>
                     <hr>
@@ -239,11 +224,66 @@
         if($(this).prev().val()){
             $(this).prev().val(+$(this).prev().val()+1);
         }
-    })
+    });
 
     $(".minus").on('click',function(){
         if($(this).next().val() > 1){
             if($(this).next().val() > 1) $(this).next().val(+$(this).next().val()-1);
         }
-    })
+    });
+
+    let searchParams= new URLSearchParams(window.location.search);
+    let id=searchParams.get('id');
+
+
+    async function ProductDetails() {
+        let res=await axios.get("/ProductDetailsById/"+id);
+        let details=res.data['data'];
+
+        document.getElementById('product_img').src=details[0]['img1'];
+        document.getElementById('img1').src=details[0]['img1'];
+        document.getElementById('img2').src=details[0]['img2'];
+        document.getElementById('img3').src=details[0]['img3'];
+        document.getElementById('img4').src=details[0]['img4'];
+
+        document.getElementById('p_title').innerText=details[0]['product']['title'];
+        document.getElementById('p_price').innerText=`$ ${details[0]['product']['price']}`;
+        document.getElementById('p_des').innerText=details[0]['des'];
+
+        //Size and Color
+        let size=details[0]['size'].split(',');
+        let color=details[0]['color'].split(',');
+
+        let sizeOption=`<option value="">Choose Size</option>`;
+        $("#p_size").append(sizeOption);
+        size.forEach((item)=>{
+            let option=`<option value='${item}'>${item}</option>`;
+            $("#p_size").append(option);
+        });
+
+        let colorOption=`<option value="">Choose Color</option>`;
+        $("#p_color").append(colorOption);
+        size.forEach((item)=>{
+            let option=`<option value='${item}'>${item}</option>`;
+            $("#p_color").append(option);
+        });
+
+        $("#img1").on('click', function(){
+            $("#product_img").attr('src', details[0]['img1']);
+        });
+
+        $("#img2").on('click', function(){
+            $("#product_img").attr('src', details[0]['img2']);
+        });
+
+        $("#img3").on('click', function(){
+            $("#product_img").attr('src', details[0]['img3']);
+        });
+
+        $("#img4").on('click', function(){
+            $("#product_img").attr('src', details[0]['img4']);
+        });
+
+    }
+
 </script>
