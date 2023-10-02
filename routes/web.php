@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Models\ProductDetails;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', [HomeController::class, 'HomePage']);
 Route::get('/by-category', [CategoryController::class, 'CategoryPage']);
 Route::get('/by-brand', [BrandController::class, 'BrandPage']);
 Route::get('/policy', [PolicyController::class, 'PolicyPage']);
+Route::get('/details', [ProductDetails::class, 'DetailsPage']);
 
 
 // Brand List
