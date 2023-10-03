@@ -56,15 +56,14 @@
                         <div class="cart-product-quantity">
                             <div class="quantity">
                                 <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="1" title="Qty" class="qty"
-                                    size="4">
+                                <input id="p_qty" type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
                                 <input type="button" value="+" class="plus">
                             </div>
                         </div>
                         <div class="cart_btn">
-                            <button class="btn btn-fill-out btn-addtocart" type="button">
+                            <button onclick="AddToCart()" class="btn btn-fill-out btn-addtocart" type="button">
                             <i class="icon-basket-loaded"></i> Add to cart</button>
-                            <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
+                            <a onclick="AddToWishList()" class="add_wishlist" href="#"><i class="icon-heart"></i></a>
                         </div>
                     </div>
                     <hr>
@@ -284,6 +283,50 @@
             $("#product_img").attr('src', details[0]['img4']);
         });
 
+    }
+
+    async function AddToCart(){
+
+        try{
+            let p_size=$("#p_size").vla();
+            let p_color=$("#p_color").vla();
+            let p_qty=$("#p_qty").vla();
+            console.log(p_size,p_color,p_qty);
+
+            if(p_size.length===0){
+                alert('Product Size Required!');
+            }else if(p_color.length===0){
+                alert('Product Color Required!');
+            }else if(p_qty < 1){
+                alert('Product Quantity Required!');
+            }else{
+                let res=await axios.post("/CreateCartList/",{
+                    "product_id" : id,
+                    "color" : p_color,
+                    "size" : p_size,
+                    "qty" : p_qty
+                });
+            }
+        }
+        catch(e){
+
+            if(e.res.status===401){
+                window.location.href="/login";
+            }
+
+        }
+    }
+
+    async function AddToWishList(){
+
+        try{
+            let res=await axios.get("/CreateWishList/"+id);
+        }
+        catch(e){
+            if(e.res.status===401){
+                window.location.href="/login";
+            }
+        }
     }
 
 </script>
