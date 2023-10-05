@@ -63,7 +63,7 @@
                         <div class="cart_btn">
                             <button onclick="AddToCart()" class="btn btn-fill-out btn-addtocart" type="button">
                             <i class="icon-basket-loaded"></i> Add to cart</button>
-                            <a onclick="AddToWishList()" class="add_wishlist" href="#"><i class="icon-heart"></i></a>
+                            <a onclick="AddToWishList()" class="add_wishlist"><i class="icon-heart"></i></a>
                         </div>
                     </div>
                     <hr>
@@ -219,6 +219,7 @@
 </div>
 
 <script>
+
     $(".plus").on('click',function(){
         if($(this).prev().val()){
             $(this).prev().val(+$(this).prev().val()+1);
@@ -262,7 +263,7 @@
 
         let colorOption=`<option value="">Choose Color</option>`;
         $("#p_color").append(colorOption);
-        size.forEach((item)=>{
+        color.forEach((item)=>{
             let option=`<option value='${item}'>${item}</option>`;
             $("#p_color").append(option);
         });
@@ -288,19 +289,18 @@
     async function AddToCart(){
 
         try{
-            let p_size=$("#p_size").vla();
-            let p_color=$("#p_color").vla();
-            let p_qty=$("#p_qty").vla();
-            console.log(p_size,p_color,p_qty);
+            let p_size=$("#p_size").val();
+            let p_color=$("#p_color").val();
+            let p_qty=$("#p_qty").val();
 
-            if(p_size.length===0){
-                alert('Product Size Required!');
-            }else if(p_color.length===0){
+            if(p_color.length===0){
                 alert('Product Color Required!');
+            }else if(p_size.length===0){
+                alert('Product Size Required!');
             }else if(p_qty < 1){
                 alert('Product Quantity Required!');
             }else{
-                let res=await axios.post("/CreateCartList/",{
+                let res=await axios.post("/CreateCartList",{
                     "product_id" : id,
                     "color" : p_color,
                     "size" : p_size,
@@ -309,11 +309,10 @@
             }
         }
         catch(e){
-
-            if(e.res.status===401){
+            if(e.response.status === 401){
+                sessionStorage.setItem('last_location',window.location.href);
                 window.location.href="/login";
             }
-
         }
     }
 
@@ -323,8 +322,10 @@
             let res=await axios.get("/CreateWishList/"+id);
         }
         catch(e){
-            if(e.res.status===401){
+            if(e.response.status === 401){
+                sessionStorage.setItem('last_location',window.location.href);
                 window.location.href="/login";
+
             }
         }
     }

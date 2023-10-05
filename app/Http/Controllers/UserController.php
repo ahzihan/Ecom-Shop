@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
+    function Login(){
+        return view('pages.login-page');
+    }
+
+    function Verify(){
+        return view('pages.verify-page');
+    }
+
     public function UserLogin(Request $request):JsonResponse
     {
 

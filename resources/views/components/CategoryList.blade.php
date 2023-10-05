@@ -1,5 +1,5 @@
 <div class="breadcrumb_section bg_gray page-title-mini">
-    <div class="container"><!-- STRART CONTAINER -->
+    <div class="container">
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
@@ -13,7 +13,7 @@
                 </ol>
             </div>
         </div>
-    </div><!-- END CONTAINER-->
+    </div>
 </div>
 
 <div class="mt-5">
@@ -40,9 +40,8 @@
                                     </a>
                                     <div class="product_action_box">
                                         <ul class="list_none pr_action_btn">
-                                            <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                            <li><a href="#" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                            <li><a href="#" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                                            <li class="add-to-cart"><a href="/details?id=${item['id']}"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+                                            <li><a href="/details?id=${item['id']}" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                             <li><a href="#"><i class="icon-heart"></i></a></li>
                                         </ul>
                                     </div>

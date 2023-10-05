@@ -24,6 +24,8 @@ Route::get('/by-category', [CategoryController::class, 'CategoryPage']);
 Route::get('/by-brand', [BrandController::class, 'BrandPage']);
 Route::get('/policy', [PolicyController::class, 'PolicyPage']);
 Route::get('/details', [ProductDetails::class, 'DetailsPage']);
+Route::get('/login', [UserController::class, 'Login']);
+Route::get('/verify', [UserController::class, 'Verify']);
 
 
 // Brand List
