@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
-    function Login(){
+    function LoginPage(){
         return view('pages.login-page');
     }
 
-    function Verify(){
+    function VerifyPage(){
         return view('pages.verify-page');
     }
 

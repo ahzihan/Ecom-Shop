@@ -15,6 +15,15 @@ use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
 {
+
+    function WishListPage(){
+        return view('pages.wishlist-page');
+    }
+
+    function CartListPage(){
+        return view('pages.cartlist-page');
+    }
+
     public function ListProductByCategory(Request $request):JsonResponse{
         $data=Product::where('category_id',$request->id)->with('brand','category')->get();
         return ResponseHelper::Out('success',$data,200);

@@ -300,17 +300,24 @@
             }else if(p_qty < 1){
                 alert('Product Quantity Required!');
             }else{
+                $(".preloader").delay(80).fadeIn(90).removeClass('loaded');
                 let res=await axios.post("/CreateCartList",{
                     "product_id" : id,
                     "color" : p_color,
                     "size" : p_size,
                     "qty" : p_qty
                 });
+
+                $(".preloader").delay(80).fadeOut(90).addClass('loaded');
+
+                if(res.status===200){
+                    alert("Request Success");
+                }
             }
         }
         catch(e){
-            if(e.response.status === 401){
-                sessionStorage.setItem('last_location',window.location.href);
+            if(e.response.status === 404){
+                sessionStorage.setItem('last_location', window.location.href);
                 window.location.href="/login";
             }
         }
@@ -319,11 +326,18 @@
     async function AddToWishList(){
 
         try{
+            $(".preloader").delay(80).fadeIn(90).removeClass('loaded');
             let res=await axios.get("/CreateWishList/"+id);
+            $(".preloader").delay(80).fadeOut(90).addClass('loaded');
+
+            if(res.status===200){
+                alert("Request Success");
+            }
         }
         catch(e){
-            if(e.response.status === 401){
-                sessionStorage.setItem('last_location',window.location.href);
+            if(e.response.status === 404){
+                console.log(e.response);
+                sessionStorage.setItem('last_location', window.location.href);
                 window.location.href="/login";
 
             }

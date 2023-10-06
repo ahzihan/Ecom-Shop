@@ -43,29 +43,11 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="dropdown">
-                            <a data-bs-toggle="dropdown" class="nav-link" href="wishlist.html"><i class="ti-heart"></i><span class="mx-2">Wishlist</span></a>
+                        <li>
+                            <a class="nav-link nav_item" href="{{ url('/wishlist') }}"><i class="ti-heart"></i><span class="mx-2">Wishlist</span></a>
                         </li>
-                        <li class="dropdown cart_dropdown">
-                            <a class="nav-link cart_trigger" href="{{ url('/') }}"
-                            data-bs-toggle="dropdown"><i class="linearicons-cart"></i>Cart<span class="cart_count">1</span></a>
-                            <div class="cart_box dropdown-menu dropdown-menu-right">
-                                <ul class="cart_list">
-                                    <li>
-                                        <a href="{{ url('/') }}" class="item_remove"><i class="ion-close"></i></a>
-                                        <a href="{{ url('/') }}"><img src="{{ asset('assets/images/cart_thamb1.jpg')}}"
-                                        alt="cart_thumb1">Variable product 001</a>
-                                        <span class="cart_quantity"> 1 x <span class="cart_amount"> <span
-                                        class="price_symbole">$</span></span>78.00</span>
-                                    </li>
-                                </ul>
-                                <div class="cart_footer">
-                                    <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
-                                    <p class="cart_buttons"><a href="{{ url('/') }}"
-                                    class="btn btn-fill-line rounded-0 view-cart">View Cart</a><a href="{{ url('/') }}"
-                                    class="btn btn-fill-out rounded-0 checkout">Checkout</a></p>
-                                </div>
-                            </div>
+                        <li>
+                            <a class="nav-link nav_item" href="{{ url('/cart-list') }}"><i class="linearicons-cart"></i><span class="mx-2">Cart</span></a>
                         </li>
 
                     </ul>
