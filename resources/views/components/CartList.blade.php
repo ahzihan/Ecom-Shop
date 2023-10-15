@@ -39,17 +39,13 @@
                         	<tr>
                             	<td colspan="6" class="px-0">
                                 	<div class="row g-0 align-items-center">
-
                                     	<div class="col-lg-4 col-md-6 mb-3 mb-md-0">
                                             <div class="coupon field_form input-group">
-                                                <input type="text" value="" class="form-control form-control-sm" placeholder="Enter Coupon Code..">
-                                                <div class="input-group-append">
-                                                	<button class="btn btn-fill-out btn-sm" type="submit">Apply Coupon</button>
-                                                </div>
+                                                <p><strong>Total = $<span id="total"></span></strong></p>
                                             </div>
                                     	</div>
                                         <div class="col-lg-8 col-md-6  text-start  text-md-end">
-                                            <button class="btn btn-line-fill btn-sm" type="submit">Update Cart</button>
+                                            <button class="btn btn-line-fill btn-sm" type="submit">Proceed To CheckOut</button>
                                         </div>
                                     </div>
                                 </td>
@@ -64,64 +60,6 @@
             	<div class="medium_divider"></div>
             	<div class="divider center_icon"><i class="ti-shopping-cart-full"></i></div>
             	<div class="medium_divider"></div>
-            </div>
-        </div>
-        <div class="row">
-        	<div class="col-md-6">
-            	<div class="heading_s1 mb-3">
-            		<h6>Calculate Shipping</h6>
-                </div>
-                <form class="field_form shipping_calculator">
-                    <div class="form-row">
-                        <div class="form-group col-lg-12 mb-3">
-                            <div class="custom_select">
-                                <select class="form-control first_null not_chosen">
-                                    <option value="">Choose a option...</option>
-                                    <option value="AX">Aland Islands</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-lg-6 mb-3">
-                            <input required="required" placeholder="State / Country" class="form-control" name="name" type="text">
-                        </div>
-                        <div class="form-group col-lg-6 mb-3">
-                            <input required="required" placeholder="PostCode / ZIP" class="form-control" name="name" type="text">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-lg-12 mb-3">
-                            <button class="btn btn-fill-line" type="submit">Update Totals</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-6">
-            	<div class="border p-3 p-md-4">
-                    <div class="heading_s1 mb-3">
-                        <h6>Cart Totals</h6>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="cart_total_label">Cart Subtotal</td>
-                                    <td class="cart_total_amount">$349.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="cart_total_label">Shipping</td>
-                                    <td class="cart_total_amount">Free Shipping</td>
-                                </tr>
-                                <tr>
-                                    <td class="cart_total_label">Total</td>
-                                    <td class="cart_total_amount"><strong>$349.00</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <a href="#" class="btn btn-fill-out">Proceed To CheckOut</a>
-                </div>
             </div>
         </div>
     </div>
@@ -145,16 +83,14 @@
                             <input type="text" name="quantity" value="${item['qty']}" title="Qty" class="qty" size="4">
                             <input type="button" value="+" class="plus">
                             </div></td>
-                            <td class="product-subtotal" data-title="Total">$ <span class="subtotal"></span></td>
+                            <td class="product-subtotal" data-title="Total">$ <span class="subtotal">${item['price']}</span></td>
                             <td class="product-remove" data-title="Remove"><a class="remove" data-id="${item['product']['id']}" ><i class="ti-close"></i></a></td>
                         </tr>`;
 
             $("#cartList").append(EachItem);
         });
 
-        let unitPrice=$(".unit-price").text();
-        let qty=$(".qty").val();
-        await calculation(unitPrice,qty);
+        await CartTotal(res.data['data']);
 
 
         $(".plus").on('click',function(){
@@ -173,14 +109,18 @@
         $(".remove").on('click', function(){
             let id=$(this).data('id');
             RemoveCartList(id);
-        })
+        });
+
+
     }
 
-    async function calculation(unitPrice,qty){
-        let total=parseInt(unitPrice) * parseInt(qty);
-        $(".subtotal").text(total);
+    async function CartTotal(data){
+        let Total=0;
+        data.forEach((item,i)=>{
+            Total=Total+parseFloat(item['price']);
+        });
+        $("#total").text(Total);
     }
-
 
     async function RemoveCartList(id){
 

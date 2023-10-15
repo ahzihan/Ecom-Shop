@@ -14,7 +14,12 @@
                     <div class="text-center text-md-end">
                         <ul class="header_list">
                             <li><a href="/policy?name=about"><span>About</span></a></li>
-                            <li><a href="login.html"><i class="ti-user"></i><span>Account</span></a></li>
+                            @if (Cookie::get('token') !== null)
+                                <li><a href="{{ url('/profile') }}"><i class="ti-user"></i><span>Account</span></a></li>
+                                <li><a class="btn btn-fill-out btn-xs" href="{{ url('/logout') }}"><span>LogOut</span></a></li>
+                            @else
+                                <li><a class="btn btn-line-fill btn-xs" href="{{ url('/login') }}"><span>Login</span></a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
