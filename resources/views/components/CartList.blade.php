@@ -3,7 +3,7 @@
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>Shopping Card</h1>
+            		<h1>Card List</h1>
                 </div>
             </div>
             <div class="col-md-6">
@@ -53,13 +53,6 @@
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-            	<div class="medium_divider"></div>
-            	<div class="divider center_icon"><i class="ti-shopping-cart-full"></i></div>
-            	<div class="medium_divider"></div>
             </div>
         </div>
     </div>
