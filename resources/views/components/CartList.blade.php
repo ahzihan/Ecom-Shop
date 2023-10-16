@@ -45,7 +45,7 @@
                                             </div>
                                     	</div>
                                         <div class="col-lg-8 col-md-6  text-start  text-md-end">
-                                            <button class="btn btn-line-fill btn-sm" type="submit">Proceed To CheckOut</button>
+                                            <button onclick="CheckOut()" class="btn btn-line-fill btn-sm" type="submit">Proceed To CheckOut</button>
                                         </div>
                                     </div>
                                 </td>
@@ -127,5 +127,32 @@
         }else{
             alert("Requist Fail!");
         }
+    }
+
+    async function CheckOut(){
+
+        $(".preloader").delay(80).fadeIn(100).removeClass('loaded');
+        $("#paymentList").empty();
+
+        let res=await axios.get(`/InvoiceCreate`);
+
+        $(".preloader").delay(80).fadeOut(100).addClass('loaded');
+
+        if(res.status===200){
+            $("#paymentMethodModal").modal('show');
+
+                res.data['data'][0]['paymentMethod'].forEach((item,i)=>{
+                let EachItem=`<tr>
+                            <td><img class="w-25" src="${item['logo']}" alt="method-logo"></td>
+                            <td><p>${item['name']}</p></td>
+                            <td><a class="btn btn-fill-out" href="${item['redirectGatewayURL']}">Pay</a></td>
+                    </tr>`;
+
+                $("#paymentList").append(EachItem);
+            });
+        }else{
+            alert("Request Fail!");
+        }
+
     }
 </script>

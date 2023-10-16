@@ -1,22 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\PolicyController;
-use App\Http\Middleware\TokenAuthenticate;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\TokenAuthenticate;
 use App\Models\ProductDetails;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-*/
+ */
 
 //Page Route
 Route::get('/', [HomeController::class, 'HomePage']);
@@ -28,7 +28,7 @@ Route::get('/login', [UserController::class, 'LoginPage']);
 Route::get('/verify', [UserController::class, 'VerifyPage']);
 Route::get('/wishlist', [ProductController::class, 'WishListPage']);
 Route::get('/cart-list', [ProductController::class, 'CartListPage']);
-
+Route::get('/profile', [ProfileController::class, 'ProfilePage']);
 
 // Brand List
 Route::get('/BrandList', [BrandController::class, 'BrandList']);
@@ -68,7 +68,6 @@ Route::post('/CreateCartList', [ProductController::class, 'CreateCartList'])->mi
 Route::get('/CartList', [ProductController::class, 'CartList'])->middleware([TokenAuthenticate::class]);
 Route::get('/DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList'])->middleware([TokenAuthenticate::class]);
 
-
 // Invoice and payment
 Route::get("/InvoiceCreate", [InvoiceController::class, 'InvoiceCreate'])->middleware([TokenAuthenticate::class]);
 Route::get("/InvoiceList", [InvoiceController::class, 'InvoiceList'])->middleware([TokenAuthenticate::class]);
@@ -78,5 +77,3 @@ Route::get("/InvoiceProductList/{invoice_id}", [InvoiceController::class, 'Invoi
 Route::post("/PaymentSuccess", [InvoiceController::class, 'PaymentSuccess']);
 Route::post("/PaymentCancel", [InvoiceController::class, 'PaymentCancel']);
 Route::post("/PaymentFail", [InvoiceController::class, 'PaymentFail']);
-
-
