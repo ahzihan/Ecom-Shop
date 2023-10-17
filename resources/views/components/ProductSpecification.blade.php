@@ -27,15 +27,17 @@
                     </ul>
                 </div>
 
-
                 <div class="tab-pane fade" id="review_create-tab-pane" role="tabpanel" aria-labelledby="review_create-tab" tabindex="0">
                     <label class="form-label">Write Your Review</label>
                     <textarea class="form-control form-control-sm" id="reviewTextID" rows="5" placeholder="Your Review"></textarea>
                     <label class="form-label mt-2">Rating Score</label>
                     <input min="1" value="0" max="10" id="reviewScore" type="number" class="form-control-sm form-control">
+                    @if (Cookie::get('token') !== null)
                     <button onclick="AddReview()" class="btn btn-danger mt-3 btn-sm">Submit</button>
+                    @else
+                    <a href="{{ url('/login') }}" class="btn btn-danger mt-3 btn-sm">Submit</a>
+                    @endif
                 </div>
-
 
             </div>
         </div>

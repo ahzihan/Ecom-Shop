@@ -43,10 +43,17 @@
                 	<div class="widget">
                         <h6 class="widget_title">My Account</h6>
                         <ul class="widget_links">
+                            @if (Cookie::get('token') !== null)
                             <li><a href="{{ url('/profile') }}">Profile</a></li>
                             <li><a href="{{ url('/wishlist') }}">Wish List</a></li>
                             <li><a href="{{ url('/cart-list') }}">Cart List</a></li>
                             <li><a href="{{ url('/profile') }}">Order History</a></li>
+                            @else
+                            <li><a href="{{ url('/login') }}">Profile</a></li>
+                            <li><a href="{{ url('/login') }}">Wish List</a></li>
+                            <li><a href="{{ url('/login') }}">Cart List</a></li>
+                            <li><a href="{{ url('/login') }}">Order History</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

@@ -29,6 +29,9 @@
 <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/slick-theme.css')}}">
 
+<link href="{{asset('assets/css/toastify.min.css')}}" rel="stylesheet" />
+    <script src="{{asset('assets/js/toastify-js.js')}}"></script>
+
 <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
 

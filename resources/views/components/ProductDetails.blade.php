@@ -192,7 +192,6 @@
         }
         catch(e){
             if(e.response.status === 404){
-                console.log(e.response);
                 sessionStorage.setItem('last_location', window.location.href);
                 window.location.href="/login";
 

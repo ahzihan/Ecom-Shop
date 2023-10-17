@@ -31,8 +31,9 @@
     <script>
         (async () => {
             await OrderListRequest();
-            await TopBrands();
+            await ProfileDetails();
             $(".preloader").delay(90).fadeOut(100).addClass('loaded');
+            await TopBrands();
         })()
     </script>
 
