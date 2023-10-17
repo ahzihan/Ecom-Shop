@@ -61,11 +61,11 @@
             json.forEach((item,i)=>{
                 let rows=`<tr>
                        <td>${item['id']}</td>
-                       <td>$ ${item['payable']} </td>
+                       <td style="width: 100px">$ ${item['payable']} </td>
                        <td>${item['ship_details']}</td>
                        <td>${item['delivery_status']}</td>
                        <td>${item['payment_status']}</td>
-                       <td><button data-id=${item['id']} class="btn view btn-danger btn-sm">View</button></td>
+                       <td><button data-id=${item['id']} class="btn btn-sm view btn-danger ">View</button></td>
                    </tr>`
 
                 $("#OrderList").append(rows);

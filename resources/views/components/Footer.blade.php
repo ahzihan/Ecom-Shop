@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                 	<div class="widget">
                         <div class="footer_logo">
-                            <a href="#"><img src="{{asset('assets/images/logo_light.png')}}" alt="logo"></a>
+                            <a href="{{ url('/') }}"><img src="{{asset('assets/images/logo_light.png')}}" alt="logo"></a>
                         </div>
                         <p>If you are going to use of Lorem Ipsum need to be sure there isn't hidden of text</p>
                     </div>
@@ -43,10 +43,10 @@
                 	<div class="widget">
                         <h6 class="widget_title">My Account</h6>
                         <ul class="widget_links">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Wish List</a></li>
-                            <li><a href="#">Cart List</a></li>
-                            <li><a href="#">Order History</a></li>
+                            <li><a href="{{ url('/profile') }}">Profile</a></li>
+                            <li><a href="{{ url('/wishlist') }}">Wish List</a></li>
+                            <li><a href="{{ url('/cart-list') }}">Cart List</a></li>
+                            <li><a href="{{ url('/profile') }}">Order History</a></li>
                         </ul>
                     </div>
                 </div>

@@ -8,8 +8,8 @@
     <script>
         (async ()=>{
 
-            $(".preloader").delay(80).fadeOut(100).addClass('loaded');
             await WishList();
+            $(".preloader").delay(80).fadeOut(100).addClass('loaded');
 
             await TopBrands();
         })()
