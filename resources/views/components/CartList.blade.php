@@ -74,7 +74,7 @@
                             <td class="product-quantity" data-title="Quantity"><div class="quantity">
                             <input type="button" value="-" class="minus">
                             <input type="text" name="quantity" value="${item['qty']}" title="Qty" class="qty" size="4">
-                            <input type="button" value="+" class="plus">
+                            <input type="button" data-unitPrice="${item['product']['price']}" value="+" class="plus">
                             </div></td>
                             <td class="product-subtotal" data-title="Total">$ <span class="subtotal">${item['price']}</span></td>
                             <td class="product-remove" data-title="Remove"><a class="remove" data-id="${item['product']['id']}" ><i class="ti-close"></i></a></td>
@@ -87,15 +87,20 @@
 
 
         $(".plus").on('click',function(){
+
+            let unitPrice=$(this).data('unitPrice');
+            alert(unitPrice);
             if($(this).prev().val()){
-                $(this).prev().val(+$(this).prev().val()+1);
+               let qty=$(this).prev().val(+$(this).prev().val()+1);
             }
+            CartUpdate(qty,unitPrice);
         });
 
         $(".minus").on('click',function(){
             if($(this).next().val() > 1){
-                if($(this).next().val() > 1) $(this).next().val(+$(this).next().val()-1);
+                let qty=$(this).next().val(+$(this).next().val()-1);
             }
+            CartUpdate(qty);
         });
 
 
@@ -105,6 +110,14 @@
         });
 
 
+    }
+
+    async function CartUpdate(qty,unitPrice){
+        alert(unitPrice);
+
+        let Total=unitPrice*qty;
+
+        $("#subtotal").text(Total);
     }
 
     async function CartTotal(data){
