@@ -73,8 +73,8 @@
                             <td class="product-price" data-title="Price">$ <span class="unit-price">${item['product']['price']}</span></td>
                             <td class="product-quantity" data-title="Quantity"><div class="quantity">
                             <input type="button" value="-" class="minus">
-                            <input type="text" name="quantity" value="${item['qty']}" title="Qty" class="qty" size="4">
-                            <input type="button" data-unitPrice="${item['product']['price']}" value="+" class="plus">
+                            <input type="text" data-unitprice="${item['product']['price']}" name="quantity" value="${item['qty']}" title="Qty" class="qty" size="4">
+                            <input type="button" value="+" class="plus">
                             </div></td>
                             <td class="product-subtotal" data-title="Total">$ <span class="subtotal">${item['price']}</span></td>
                             <td class="product-remove" data-title="Remove"><a class="remove" data-id="${item['product']['id']}" ><i class="ti-close"></i></a></td>
@@ -86,21 +86,15 @@
         await CartTotal(res.data['data']);
 
 
-        $(".plus").on('click',function(){
-
-            let unitPrice=$(this).data('unitPrice');
-            alert(unitPrice);
-            if($(this).prev().val()){
-               let qty=$(this).prev().val(+$(this).prev().val()+1);
-            }
-            CartUpdate(qty,unitPrice);
+        // Event listeners for plus and minus buttons
+        $(document).on("click", ".plus", function () {
+            var inputElement = $(this).siblings(".qty");
+            incrementQuantity(inputElement);
         });
 
-        $(".minus").on('click',function(){
-            if($(this).next().val() > 1){
-                let qty=$(this).next().val(+$(this).next().val()-1);
-            }
-            CartUpdate(qty);
+        $(document).on("click", ".minus", function () {
+            var inputElement = $(this).siblings(".qty");
+            decrementQuantity(inputElement);
         });
 
 
@@ -112,13 +106,44 @@
 
     }
 
-    async function CartUpdate(qty,unitPrice){
-        alert(unitPrice);
-
-        let Total=unitPrice*qty;
-
-        $("#subtotal").text(Total);
+    function incrementQuantity(inputElement) {
+        var currentValue = parseInt(inputElement.val());
+        inputElement.val(currentValue + 1);
+        updateSubtotal(inputElement);
+        updateTotal();
     }
+
+    // Function to decrement quantity
+    function decrementQuantity(inputElement) {
+        var currentValue = parseInt(inputElement.val());
+        if (currentValue > 1) {
+            inputElement.val(currentValue - 1);
+            updateSubtotal(inputElement);
+            updateTotal();
+        }
+    }
+
+    // Function to update subtotal based on quantity
+    function updateSubtotal(inputElement) {
+        var quantity = parseInt(inputElement.val());
+        var unitPrice = parseFloat(inputElement.data("unitprice"));
+        var subtotal = quantity * unitPrice;
+        var parentRow = inputElement.closest("tr");
+        parentRow.find(".subtotal").text(subtotal.toFixed(2));
+    }
+
+
+
+    // Function to update total amount
+    function updateTotal() {
+        let total = 0;
+        $('.subtotal').each(function() {
+            total += parseFloat($(this).text());
+        });
+        $('#total').text(total.toFixed(2));
+    }
+
+
 
     async function CartTotal(data){
         let Total=0;
