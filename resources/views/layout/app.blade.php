@@ -30,13 +30,14 @@
 <link rel="stylesheet" href="{{asset('assets/css/slick-theme.css')}}">
 
 <link href="{{asset('assets/css/toastify.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('assets/js/toastify-js.js')}}"></script>
+<script src="{{asset('assets/js/toastify-js.js')}}"></script>
 
 <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
 
 <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
 <script src="{{asset('assets/js/axios.min.js')}}"></script>
+<script src="{{asset('js/config.js')}}"></script>
 
 </head>
 
@@ -59,6 +60,7 @@
 
 
 <!-- Latest jQuery -->
+
 <script src="{{asset('assets/js/scripts.js')}}"></script>
 <script src="{{asset('assets/js/magnific-popup.min.js')}}"></script>
 <script src="{{asset('assets/js/popper.min.js')}}"></script>

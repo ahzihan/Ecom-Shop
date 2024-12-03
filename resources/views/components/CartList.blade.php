@@ -88,12 +88,12 @@
 
         // Event listeners for plus and minus buttons
         $(document).on("click", ".plus", function () {
-            var inputElement = $(this).siblings(".qty");
+            let inputElement = $(this).siblings(".qty");
             incrementQuantity(inputElement);
         });
 
         $(document).on("click", ".minus", function () {
-            var inputElement = $(this).siblings(".qty");
+            let inputElement = $(this).siblings(".qty");
             decrementQuantity(inputElement);
         });
 
@@ -107,7 +107,7 @@
     }
 
     function incrementQuantity(inputElement) {
-        var currentValue = parseInt(inputElement.val());
+        let currentValue = parseInt(inputElement.val());
         inputElement.val(currentValue + 1);
         updateSubtotal(inputElement);
         updateTotal();
@@ -115,7 +115,7 @@
 
     // Function to decrement quantity
     function decrementQuantity(inputElement) {
-        var currentValue = parseInt(inputElement.val());
+        let currentValue = parseInt(inputElement.val());
         if (currentValue > 1) {
             inputElement.val(currentValue - 1);
             updateSubtotal(inputElement);
@@ -125,10 +125,10 @@
 
     // Function to update subtotal based on quantity
     function updateSubtotal(inputElement) {
-        var quantity = parseInt(inputElement.val());
-        var unitPrice = parseFloat(inputElement.data("unitprice"));
-        var subtotal = quantity * unitPrice;
-        var parentRow = inputElement.closest("tr");
+        let quantity = parseInt(inputElement.val());
+        let unitPrice = parseFloat(inputElement.data("unitprice"));
+        let subtotal = quantity * unitPrice;
+        let parentRow = inputElement.closest("tr");
         parentRow.find(".subtotal").text(subtotal.toFixed(2));
     }
 
